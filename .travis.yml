@@ -15,7 +15,7 @@ before_script:
     - sudo mkdir /srv/database && sudo mount --bind `pwd`/database /srv/database
     - sudo mkdir /srv/config && sudo mount --bind `pwd`/config /srv/config
     - sudo mkdir /srv/www && sudo mount --bind `pwd`/www /srv/www
-    - mysqladmin -u root password 'root'
+    - echo "USE mysql;\nUPDATE user SET password=PASSWORD('root') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
     - sudo bash provision/provision.sh
 
 script: bundle exec rake spec
