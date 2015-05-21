@@ -18,6 +18,6 @@ before_script:
     - sudo mkdir /srv/www && sudo mount --bind `pwd`/www /srv/www
     - sudo cp /srv/config/mysql-config/my.cnf /etc/mysql/my.cnf
     - sudo service mysql restart && echo "USE mysql;\nUPDATE user SET password=PASSWORD('root') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
-    - sudo bash provision/provision.sh
+    - sudo -u vagrant bash provision/provision.sh
 
 script: bundle exec rake spec
