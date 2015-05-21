@@ -16,11 +16,9 @@ before_script:
     - sudo mkdir /srv/database && sudo mount --bind `pwd`/database /srv/database
     - sudo mkdir /srv/config && sudo mount --bind `pwd`/config /srv/config
     - sudo mkdir /srv/www && sudo mount --bind `pwd`/www /srv/www
-    - sudo mkdir /srv/log && sudo mount --bind `pwd`/log /srv/log
     - sudo chown -R vagrant:vagrant /srv/database
     - sudo chown -R vagrant:vagrant /srv/config
-    - sudo chown -R www-data:vagrant /srv/www
-    - sudo chown -R www-data:vagrant /srv/log
+    - sudo chown -R vagrant:vagrant /srv/www
     - sudo cp /srv/config/mysql-config/my.cnf /etc/mysql/my.cnf
     - sudo service mysql restart && echo "USE mysql;\nUPDATE user SET password=PASSWORD('root') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
     - sudo bash provision/provision.sh
