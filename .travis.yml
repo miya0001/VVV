@@ -11,7 +11,8 @@ addons:
     - build.wordpress-develop.dev
 
 before_script:
-    - sudo mkdir /srv && mount --bind `pwd` /srv
+    - ls -alF /srv/
+    - sudo mkdir /srv && sudo mount --bind `pwd` /srv
     - sudo bash provision/provision.sh
 
 script: bundle exec rake spec
