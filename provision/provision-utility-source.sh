@@ -4,6 +4,8 @@ NAME=$1
 REPO=$2
 DIR="/vagrant/provision/resources/${NAME}"
 
+mkdir -p /vagrant/provision/resources
+
 if [[ false != "${NAME}" && false != "${REPO}" ]]; then
   # Clone or pull the resources repository
   if [[ ! -d ${DIR}/.git ]]; then
